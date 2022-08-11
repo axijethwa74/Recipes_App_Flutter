@@ -26,27 +26,27 @@ class Categoryitems extends StatelessWidget {
   Widget build(BuildContext context) {
     //We use Inkell instead of gesture detector because it`s give a ripple effects
     return InkWell(
-      onTap: () => selectpage(context),
-      splashColor: Theme.of(context).primaryColor,
-      borderRadius: BorderRadius.circular(15),
-
-      child: Container(
-        padding: const EdgeInsets.all(15),
-        // ignore: sort_child_properties_last
-        child: Text(title,
-        style: Theme.of(context).textTheme.titleMedium,),
-        decoration:  BoxDecoration(
-          gradient: LinearGradient(
-            colors:[
-              color.withOpacity(0.7),
-              color,
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+        onTap: () => selectpage(context),
+        splashColor: Theme.of(context).primaryColor,
+        borderRadius: BorderRadius.circular(15),
+    
+        child: Container(
+          padding: const EdgeInsets.all(15),
+          // ignore: sort_child_properties_last
+          child: Text(title,
+          style: Theme.of(context).textTheme.titleMedium,),
+          decoration:  BoxDecoration(
+            gradient: LinearGradient(
+              colors:[
+                color.withOpacity(0.7),
+                color,
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.circular(15),
           ),
-          borderRadius: BorderRadius.circular(15),
         ),
-      ),
     );
   }
 }

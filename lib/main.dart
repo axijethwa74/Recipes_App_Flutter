@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:recipes_app/Screens/meal_detail_screen.dart';
 import 'Screens/category_meal_screen.dart';
+// ignore: unused_import
 import 'Screens/category_screen.dart';
+import 'Screens/tabscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,10 +42,37 @@ class MyApp extends StatelessWidget {
 
           )
         ),
-      home: const category_Screen(),
+     
+
+
+    //  initialRoute: '/', // default is '/'
+    //   routes: {
+    //    '/': (ctx) => const category_Screen(),
+    //     CategoryMeal.routeName: (ctx) => const CategoryMeal(),
+    //     MealDetails.routeName: (ctx) => const MealDetails(),
+    //   },
+    //   onGenerateRoute: (settings) {
+    //     // ignore: avoid_print
+    //     print(settings.arguments);
+    //     return null;
+    //     // if (settings.name == '/meal-detail') {
+    //     //   return ...;
+    //     // } else if (settings.name == '/something-else') {
+    //     //   return ...;
+    //     // }
+    //     // return MaterialPageRoute(builder: (ctx) => CategoriesScreen(),);
+    //   },
+    //   onUnknownRoute: (settings) {
+    //     return MaterialPageRoute(builder: (ctx) => const category_Screen(),);
+    //   },
+
+
+    initialRoute: '/',
       routes: {
+       '/':(ctx) => const TabScreen(),
         CategoryMeal.routeName: (ctx) =>   const CategoryMeal(),
-      },
+        MealDetails.routeName:(ctx) =>const MealDetails(),
+ },
     );
     
   }

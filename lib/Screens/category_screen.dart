@@ -9,12 +9,7 @@ class category_Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("DailyMeals"),
-      ),
-      
-      body:GridView(
+    return GridView(
 
         padding:const EdgeInsets.all(25),
       // ignore: sort_child_properties_last
@@ -36,7 +31,6 @@ class category_Screen extends StatelessWidget {
         crossAxisSpacing : 20,
         mainAxisSpacing: 20, 
       ),
-    ),
     ); 
   }
 }

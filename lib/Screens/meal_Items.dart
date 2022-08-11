@@ -2,6 +2,7 @@
 
 // ignore: unused_import
 import 'package:flutter/material.dart';
+import 'package:recipes_app/Screens/meal_detail_screen.dart';
 import 'package:recipes_app/model/meal.dart';
 
 class Mealitems extends StatelessWidget {
@@ -10,6 +11,7 @@ class Mealitems extends StatelessWidget {
 // ignore: use_key_in_widget_constructors
 const Mealitems(
   {
+  required this.id,
   required this.title,
   required this.imageUrl,
   required this.duration,
@@ -17,7 +19,7 @@ const Mealitems(
   required this.complexity, 
   }
  );
-
+final String id;
 final String title;
 final String imageUrl;
 final int duration;
@@ -71,7 +73,10 @@ String get affordabilityText{
 
 
 
-void selectitem(){
+void selectitem(BuildContext context){
+  Navigator.of(context).pushNamed(MealDetails.routeName,
+  arguments: id
+  );
 
 }
 
@@ -80,7 +85,7 @@ void selectitem(){
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: selectitem,
+      onTap: () => selectitem(context),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 5,
@@ -105,7 +110,7 @@ void selectitem(){
                   bottom: 20,
                   right: 10,
                   child: Container(
-                    color: Colors.black54,
+                    color: Colors.black,
                     width: 300,
                     padding: const EdgeInsets.symmetric(
                       vertical: 5,

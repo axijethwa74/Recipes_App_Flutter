@@ -5,11 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:recipes_app/Screens/category_screen.dart';
 import 'package:recipes_app/Screens/favourite_screen.dart';
 
+import '../model/meal.dart';
 import 'Drawer.dart';
 
 
+// ignore: must_be_immutable
 class TabScreen extends StatefulWidget {
-  const TabScreen({Key? key}) : super(key: key);
+
+final List<Meal> FavouritMeals;
+const TabScreen(this.FavouritMeals, {Key? key}) : super(key: key);
+
 
   @override
   State<TabScreen> createState() => _TabScreenState();
@@ -17,12 +22,19 @@ class TabScreen extends StatefulWidget {
 
 class _TabScreenState extends State<TabScreen> {
 
-   // ignore: unused_element, unused_field
-  final List<Map<String, Object>> _pages=[
-   {'pages' : const category_Screen(), 'titles': 'Categories'},
-   {'pages' : const FavouriteScreen(), 'titles': 'Favourites'}
+   late List<Map<String, Object>> _pages;
+   @override
+  void initState() {
+    _pages=[
+   {'pages' : const category_Screen(),
+    'titles': 'Categories'},
+    
+   {'pages' :  FavouoriteScreen(widget.FavouritMeals),
+    'titles': 'Favourites'}
     
   ];
+    super.initState();
+  }
 
 // ignore: unused_field, unused_element
  int _selectedPageIndex = 0;

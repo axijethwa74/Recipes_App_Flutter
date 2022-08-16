@@ -17,7 +17,7 @@ const Mealitems(
   required this.duration,
   required this.affordability,
   required this.complexity, 
-  required this.removeitems,
+  
   }
  );
 final String id;
@@ -26,7 +26,7 @@ final String imageUrl;
 final int duration;
 final Affordability affordability;
 final Complexity complexity;
-final Function removeitems;
+
 
 // ignore: non_constant_identifier_names
 String get Complexitytext{
@@ -80,7 +80,7 @@ void selectitem(BuildContext context){
   arguments: id
   ).then((result){
     if(result != null){
-      removeitems(result);
+      // removeitems(result);
     }
   } );
   }

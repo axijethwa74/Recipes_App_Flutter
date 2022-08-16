@@ -30,6 +30,28 @@ class _MyAppState extends State<MyApp> {
   };
 
     List<Meal> _availableMeals = DUMMY_MEALS;
+    // ignore: non_constant_identifier_names, prefer_final_fields, unused_field
+    List<Meal> _FavouriteMeal = [];
+
+
+
+    // ignore: unused_element
+    void _toggleFavourite(String mealId){
+      // ignore: unused_local_variable, no_leading_underscores_for_local_identifiers
+      final _existingMeal =_FavouriteMeal.indexWhere((meal) => meal.id==mealId);
+      if(_existingMeal >= 0){
+      setState(() {
+          _FavouriteMeal.removeWhere((meal) => meal.id == mealId);
+      });
+      }
+      else{
+        setState(() {
+          _FavouriteMeal.add(DUMMY_MEALS.firstWhere((meal) => meal.id==mealId
+        ));
+        });
+      }
+
+    }
 
  // ignore: unused_element
  void _setFilters(Map<String, bool> filterData) {
@@ -54,6 +76,11 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  // ignore: unused_element
+  bool _isMealFavourite(String id){
+    return _FavouriteMeal.any((meal) => meal.id == id );
+
+  }
 
 
 
@@ -114,9 +141,9 @@ class _MyAppState extends State<MyApp> {
 
     initialRoute: '/',
       routes: {
-       '/':(ctx) => const TabScreen(),
+       '/':(ctx) =>  TabScreen(_FavouriteMeal),
         CategoryMeal.routeName: (ctx) =>    CategoryMeal(_availableMeals),
-        MealDetails.routeName:(ctx) =>const MealDetails(),
+        MealDetails.routeName:(ctx) => MealDetails(_toggleFavourite as dynamic, _isMealFavourite as dynamic),
         FilterScreen.routeName:(ctx) =>  FilterScreen(_setFilters as dynamic),    
  },
     );

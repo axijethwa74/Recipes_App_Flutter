@@ -47,6 +47,7 @@ class _CategoryMealState extends State<CategoryMeal> {
     super.didChangeDependencies();
   }
 
+  // ignore: unused_element
   void _removeMeal(String Mealid){
     setState(() {
       displayedMeals.removeWhere((Meal) => Meal.id == Mealid);
@@ -70,7 +71,7 @@ class _CategoryMealState extends State<CategoryMeal> {
        duration: displayedMeals[index].duration,
        affordability: displayedMeals[index].affordability,
        complexity: displayedMeals[index].complexity,
-       removeitems: _removeMeal,      
+            
        );
        
 

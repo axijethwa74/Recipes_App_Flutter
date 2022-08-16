@@ -1,18 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:recipes_app/Screens/filter_Screen.dart';
 import 'package:recipes_app/Screens/meal_detail_screen.dart';
+import 'package:recipes_app/dummy_data.dart';
+import 'package:recipes_app/model/meal.dart';
 import 'Screens/category_meal_screen.dart';
 // ignore: unused_import
 import 'Screens/category_screen.dart';
 import 'Screens/tabscreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+// ignore: must_be_immutable
+class MyApp extends StatefulWidget {
+ const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  Map<String, bool> _filters = {
+    'gluten': false,
+    'lactose': false,
+    'vegan': false,
+    'vegetarian': false,
+  };
+
+    List<Meal> _availableMeals = DUMMY_MEALS;
+
+ // ignore: unused_element
+ void _setFilters(Map<String, bool> filterData) {
+    setState(() {
+      _filters = filterData;
+
+       _availableMeals = DUMMY_MEALS.where((meal) {
+        if (_filters['gluten']as dynamic && !meal.isGlutenFree) {
+          return false;
+        }
+        if (_filters['lactose']as dynamic && !meal.isLactoseFree) {
+          return false;
+        }
+        if (_filters['vegan']as dynamic && !meal.isVegan) {
+          return false;
+        }
+        if (_filters['vegetarian']as dynamic && !meal.isVegetarian) {
+          return false;
+        }
+        return true;
+      }).toList();
+    });
+  }
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -70,8 +115,9 @@ class MyApp extends StatelessWidget {
     initialRoute: '/',
       routes: {
        '/':(ctx) => const TabScreen(),
-        CategoryMeal.routeName: (ctx) =>   const CategoryMeal(),
+        CategoryMeal.routeName: (ctx) =>    CategoryMeal(_availableMeals),
         MealDetails.routeName:(ctx) =>const MealDetails(),
+        FilterScreen.routeName:(ctx) =>  FilterScreen(_setFilters as dynamic),    
  },
     );
     

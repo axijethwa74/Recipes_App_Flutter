@@ -2,12 +2,13 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:recipes_app/Screens/filter_Screen.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key, required }) : super(key: key);
   // ignore: non_constant_identifier_names
-  Widget BuildTitle(String title, IconData icon ){
-    return   ListTile(
+  Widget BuildTitle(String title, IconData icon, Function() tapHandler){
+    return  ListTile(
             leading:  Icon(icon,
             size: 20,),
             title:Text(title,
@@ -18,12 +19,7 @@ class MainDrawer extends StatelessWidget {
             ),
             ),
   
-            onTap: (){
-              //...
-            },
-            
-            
-
+            onTap: tapHandler,
           );
 
 
@@ -39,14 +35,14 @@ class MainDrawer extends StatelessWidget {
             height: 100,
             width: double.infinity,
             padding: const EdgeInsets.all(20),
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.bottomLeft,
             color: Theme.of(context).primaryColor,
             child:  const Text("Cooking Up!",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 22,
               // ignore: deprecated_member_use
-              color: Colors.black,
+              color: Colors.white,
               ),
             ),
           ),
@@ -55,10 +51,16 @@ class MainDrawer extends StatelessWidget {
           BuildTitle(
             'Meal',
             Icons.restaurant,
+            (){
+              Navigator.of(context).pushNamed("/");
+            }
           ),
           BuildTitle(
              'Filters',
             Icons.settings,
+              (){
+              Navigator.of(context).pushNamed(FilterScreen.routeName);
+            }
           ),
         ],
       ),

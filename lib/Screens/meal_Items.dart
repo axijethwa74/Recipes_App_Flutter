@@ -17,6 +17,7 @@ const Mealitems(
   required this.duration,
   required this.affordability,
   required this.complexity, 
+  required this.removeitems,
   }
  );
 final String id;
@@ -25,6 +26,7 @@ final String imageUrl;
 final int duration;
 final Affordability affordability;
 final Complexity complexity;
+final Function removeitems;
 
 // ignore: non_constant_identifier_names
 String get Complexitytext{
@@ -76,9 +78,12 @@ String get affordabilityText{
 void selectitem(BuildContext context){
   Navigator.of(context).pushNamed(MealDetails.routeName,
   arguments: id
-  );
-
-}
+  ).then((result){
+    if(result != null){
+      removeitems(result);
+    }
+  } );
+  }
 
 
 

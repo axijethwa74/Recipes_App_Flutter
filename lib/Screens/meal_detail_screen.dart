@@ -44,7 +44,7 @@ class MealDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final Mealid =ModalRoute.of(context)?.settings.arguments as String;
+    final Mealid = ModalRoute.of(context)?.settings.arguments as String;
     // ignore: unused_local_variable
     final SelectedMeal = DUMMY_MEALS.firstWhere((Meal) => Meal.id == Mealid);
     return Scaffold(
@@ -113,8 +113,15 @@ class MealDetails extends StatelessWidget {
 
           ],
         ),
-      ),     
-    );
+      ),
+      floatingActionButton: FloatingActionButton(
+      
+      onPressed: (){
+        Navigator.of(context).pop(Mealid);
+      },
+      child: const Icon(Icons.delete),
+      ),
+);
   }
 }
 

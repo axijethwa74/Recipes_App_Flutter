@@ -17,6 +17,7 @@ class category_Screen extends StatelessWidget {
         catData.id,
         catData.title,
         catData.color,
+        catData.ImageUrl,
         )).toList(),
 
         //Grid Delegate is just caring about the structure layout 

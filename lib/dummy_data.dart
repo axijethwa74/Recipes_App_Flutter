@@ -1,62 +1,86 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 
 import 'model/category.dart';
 import 'model/meal.dart';
 
 
-
 // ignore: constant_identifier_names, unnecessary_const
-const DUMMY_CATEGORIES = const [
+const DUMMY_CATEGORIES =  [
+  // ignore: missing_required_param
   Category(
     id: 'c1',
     title: 'Italian',
-    color: Colors.purple,
+    // color: Colors.purple,
+     ImageUrl:  "images/Italian.png",
+    
+   
   ),
+  // ignore: missing_required_param
   Category(
     id: 'c2',
-    title: 'Quick & Easy',
-    color: Colors.red,
+    title: 'Quick',
+    // color: Colors.red,
+     ImageUrl:  "images/Quick & easy.png",
   ),
+  // ignore: missing_required_param
   Category(
     id: 'c3',
     title: 'Hamburgers',
-    color: Colors.orange,
+    // color: Colors.orange,
+     ImageUrl:  "images/hamburger.png",
   ),
+  // ignore: missing_required_param
   Category(
     id: 'c4',
     title: 'German',
-    color: Colors.amber,
+    // color: Colors.amber,
+     ImageUrl:  "images/garman.png",
   ),
+  // ignore: missing_required_param
   Category(
     id: 'c5',
-    title: 'Light & Lovely',
-    color: Colors.blue,
+    title: 'Bakers',
+    // color: Colors.blue,
+     ImageUrl:  "images/Light & Lovely.png",
   ),
+  // ignore: missing_required_param
   Category(
     id: 'c6',
     title: 'Exotic',
-    color: Colors.green,
+    // color: Colors.green,
+     ImageUrl:  "images/exotic.png",
   ),
+  // ignore: missing_required_param
   Category(
     id: 'c7',
     title: 'Breakfast',
-    color: Colors.lightBlue,
+    // color: Colors.lightBlue,
+     ImageUrl:  "images/BreakFast.png",
   ),
+  // ignore: missing_required_param
   Category(
     id: 'c8',
     title: 'Asian',
-    color: Colors.lightGreen,
+    // color: Colors.lightGreen,
+     ImageUrl:  "images/Asian.png",
   ),
+  // ignore: missing_required_param
   Category(
     id: 'c9',
-    title: 'French',
-    color: Colors.pink,
+    title: 'Desi BBQ',
+    //color: Colors.pink,
+     ImageUrl:  "images/BBQ.png",
   ),
+  // ignore: missing_required_param
   Category(
     id: 'c10',
     title: 'Summer',
-    color: Colors.teal,
+    // color: Colors.teal,
+     ImageUrl:  "images/summer.png",
   ),
+  
 ];
 
 // ignore: constant_identifier_names
